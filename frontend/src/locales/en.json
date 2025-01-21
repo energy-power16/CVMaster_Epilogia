@@ -1,0 +1,24 @@
+{
+    "translation": {
+        "savedResumes": "Saved Resumes",
+        "startNewChat": "Start new chat",
+        "login": "Log in",
+        "language": "Lang",
+        "ru": "Ru",
+        "en": "En",
+        "createWithHeader": "Create custom resume",
+        "withAiHeader": "with AI",
+        "textUnderCreateWithHeader": "Create a personalized resume easily with the help of AI. Showcase your skills, experience, and achievements to make an impression on recruiters",
+
+        "createFromScratchHeading": "Create from scratch",
+        "createFromScratchParagraph": "Answer questions and get your resume",
+
+        "makeFromExistingHeader": "Make existing resume better",
+        "makeFromExistingParagraph": "Send your resume and we will make it better",
+
+        "enterYouAnswer": "Enter your answer...",
+        "send": "Send",
+        "answerToMakeResume": "Answer chat's questions to make your resume",
+        "questionsLeftToAnswer": "Questions left to answer"
+    }
+}

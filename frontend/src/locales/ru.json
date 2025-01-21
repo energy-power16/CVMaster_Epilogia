@@ -1,0 +1,25 @@
+{
+    "translation": {
+        "savedResumes": "Сохранённые резюме",
+        "startNewChat": "Новый чат",
+        "login": "Ввойти",
+        "language": "Язык",
+
+        "ru": "Ru",
+        "en": "En",
+        "createWithHeader": "Создай своё резюме",
+        "withAiHeader": "с помощью ИИ",
+        "textUnderCreateWithHeader": "Создай сврё резюме с помощью ИИ. Покажите свои навыки, опыт и достижения, чтобы произвести впечатление на рекрутеров",
+
+        "createFromScratchHeading": "Создать с нуля",
+        "createFromScratchParagraph": "Ответь на вопросы и получи своё резюме",
+
+        "makeFromExistingHeader": "Улучши существующее резюме",
+        "makeFromExistingParagraph": "Отправь своё резюме, и мы сделаем его лучше",
+
+        "enterYouAnswer": "Введи свой ответ...",
+        "send": "Отправить",
+        "answerToMakeResume": "Ответь на вопросы чата, чтобы составить своё резюме",
+        "questionsLeftToAnswer": "Осталось вопросов"
+    }
+}

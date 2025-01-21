@@ -1,0 +1,20 @@
+@use 'shared/styles/variables';
+
+body {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    background-color: variables.$appBlack;
+
+    a {
+        color: variables.$secondaryWhite;
+        font-weight: bold;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
