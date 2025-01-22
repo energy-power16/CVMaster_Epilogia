@@ -24,7 +24,7 @@ export const DownloadIcon: FC<IconProps> = ({
             <path
                 d="M8.75 28L8.75 29.75C8.75 31.683 10.317 33.25 12.25 33.25L29.75 33.25C31.683 33.25 33.25 31.683 33.25 29.75V28"
                 stroke={strokeColor}
-                stroke-width="3"
+                strokeWidth="3"
             />
         </svg>
     );

@@ -1,7 +1,45 @@
-.container {
-    .logo {
-    }
+@use 'shared/styles/variables' as v;
 
-    .buttonGroup {
+.globalWrapper {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    .container {
+        position: fixed;
+
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 90%;
+        height: 130px;
+
+        max-width: 1621px;
+        margin: 0 auto;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            color: v.$primaryWhite;
+            font-size: 2.25rem;
+        }
+
+        .buttonGroup {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            font-size: 1.25rem;
+
+            > * {
+                margin-left: 42px;
+            }
+        }
     }
 }

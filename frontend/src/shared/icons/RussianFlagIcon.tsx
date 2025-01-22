@@ -15,7 +15,7 @@ export const RussianFlagIcon: FC<IconProps> = ({
             xmlns="http://www.w3.org/2000/svg"
             className={className}
         >
-            <g clip-path="url(#clip0_31_57)">
+            <g clipPath="url(#clip0_31_57)">
                 <path
                     d="M0 -0.000366211V23.9996H36V-0.000366211H0Z"
                     fill="white"

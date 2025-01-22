@@ -17,7 +17,7 @@ export const ExpandArrowIcon: FC<IconProps> = ({
             xmlns="http://www.w3.org/2000/svg"
             className={className}
         >
-            <path d="M18 9L12 15L6 9" stroke={strokeColor} stroke-width="2" />
+            <path d="M18 9L12 15L6 9" stroke={strokeColor} strokeWidth="2" />
         </svg>
     );
 };

@@ -15,7 +15,7 @@ export const EnglishFlagIcon: FC<IconProps> = ({
             xmlns="http://www.w3.org/2000/svg"
             className={className}
         >
-            <g clip-path="url(#clip0_31_68)">
+            <g clipPath="url(#clip0_31_68)">
                 <path d="M0 0H36V24.0003H0V0Z" fill="white" />
                 <path
                     d="M20.25 -0.000366211H15.75V9.7496H0V14.2496H15.75V23.9996H20.25V14.2496H36V9.7496H20.25V-0.000366211Z"

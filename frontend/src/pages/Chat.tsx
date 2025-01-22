@@ -1,3 +1,11 @@
+import { Gradient } from 'components/Gradient/Gradient';
+import { ChatWrapper } from 'features/chat';
+
 export const Chat = () => {
-    return <div>Chat</div>;
+    return (
+        <>
+            <ChatWrapper />
+            <Gradient />
+        </>
+    );
 };
