@@ -1,0 +1,27 @@
+.circlesWrapper {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    .circle {
+        border-radius: 50%;
+        width: 14px;
+        height: 14px;
+
+        &:not(:first-child) {
+            margin-left: 13px;
+        }
+
+        &-dark {
+            background-color: #333333;
+        }
+
+        &-medium {
+            background-color: #666666;
+        }
+
+        &-light {
+            background-color: #d9d9d9;
+        }
+    }
+}

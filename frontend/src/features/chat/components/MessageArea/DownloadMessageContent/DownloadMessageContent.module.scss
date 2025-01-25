@@ -1,0 +1,50 @@
+@use 'shared/styles/variables' as v;
+@use 'sass:color';
+
+.wrapper {
+    .titleWrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .titleIcon {
+            flex-shrink: 0;
+            margin-right: 13px;
+        }
+
+        .titleText {
+            font-size: 1.25rem;
+        }
+    }
+
+    .downloadIconWrapper {
+        background-color: v.$appRed;
+
+        width: 56px;
+        height: 49px;
+
+        border-radius: 5px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin: auto;
+
+        margin-top: 16px;
+
+        &:hover {
+            background-color: color.scale($color: v.$appRed, $lightness: 20%);
+            cursor: pointer;
+        }
+
+        &:active {
+            background-color: v.$appRed;
+        }
+
+        .downloadIcon {
+            width: 42px;
+            height: 42px;
+        }
+    }
+}

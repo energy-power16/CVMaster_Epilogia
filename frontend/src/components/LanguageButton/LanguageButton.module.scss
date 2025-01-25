@@ -1,0 +1,83 @@
+@use 'shared/styles/variables' as v;
+
+@mixin languageTransition() {
+    transition: all 0.2s ease-in-out;
+}
+
+$backgroundColor: #242424;
+$borderRadius: 13px;
+
+.selectWrapper {
+    position: relative;
+
+    color: v.$secondaryWhite;
+    font-weight: bold;
+
+    .triggerWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: $backgroundColor;
+        padding: 15px 13px;
+        border-radius: $borderRadius;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        .triggerIcon {
+            display: grid;
+            place-content: center;
+        }
+
+        .triggerText {
+            margin-left: 0.8em;
+        }
+
+        .triggerExpandIcon {
+            @include languageTransition();
+
+            margin-left: 8px;
+
+            transform: rotate(0deg);
+
+            &.expanded {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    .optionsWrapper {
+        position: absolute;
+
+        width: 100%;
+
+        background-color: $backgroundColor;
+        border-radius: $borderRadius;
+
+        margin-top: 5px;
+
+        overflow: hidden;
+
+        @include languageTransition();
+
+        .option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin: 16px 17px;
+            padding: 12px 17px;
+            border-radius: 7px;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            &.chosen {
+                background-color: #363636;
+            }
+        }
+    }
+}

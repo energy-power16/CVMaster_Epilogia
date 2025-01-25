@@ -1,0 +1,44 @@
+@use 'shared/styles/variables' as v;
+@use 'sass:color';
+
+$buttonBgColor: rgba(102, 102, 102, 0.4);
+
+.newChatWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 44px;
+
+    width: 100%;
+
+    .newChatButton {
+        border: none;
+        outline: none;
+
+        border-radius: 6px;
+
+        padding: 8px 109px;
+
+        color: v.$primaryWhite;
+        background-color: $buttonBgColor;
+
+        font-size: 1.25rem;
+
+        &.hide {
+            opacity: 0;
+        }
+
+        &:hover {
+            background-color: color.scale(
+                $color: $buttonBgColor,
+                $lightness: 20%
+            );
+            cursor: pointer;
+        }
+
+        &:active {
+            background-color: $buttonBgColor;
+        }
+    }
+}

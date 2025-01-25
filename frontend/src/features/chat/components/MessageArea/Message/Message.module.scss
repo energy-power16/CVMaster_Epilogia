@@ -1,0 +1,56 @@
+$messageTextColor: #d8d8d8;
+$messageCvMasterBgColor: rgba(46, 46, 46, 0.4);
+$messageUserBgColor: rgba(102, 102, 102, 0.4);
+$messageStrokeColor: rgba(102, 102, 102, 0.17);
+
+.messageWrapper {
+    display: flex;
+    width: 100%;
+
+    &.hide {
+        opacity: 0;
+    }
+
+    &.cvMasterMessage {
+        justify-content: start;
+    }
+
+    &.userMessage {
+        justify-content: end;
+    }
+
+    .message {
+        color: $messageTextColor;
+        font-size: 1.25rem;
+
+        padding: 18px 30px;
+
+        border: 1px solid $messageStrokeColor;
+        border-radius: 23px;
+
+        animation: appearAnimation 0.3s ease-in-out forwards;
+
+        margin-bottom: 27px;
+
+        max-width: 70%;
+        overflow-wrap: break-word;
+
+        &.user {
+            background-color: $messageUserBgColor;
+        }
+
+        &.cvMaster {
+            background-color: $messageCvMasterBgColor;
+        }
+    }
+
+    @keyframes appearAnimation {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+}

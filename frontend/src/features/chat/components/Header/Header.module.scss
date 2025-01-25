@@ -1,0 +1,49 @@
+@use 'shared/styles/variables' as v;
+
+.wrapper {
+    position: absolute;
+    top: 305px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    animation: appearAnimation 3.5s ease-out forwards;
+
+    &.disappear {
+        opacity: 0;
+        display: none;
+    }
+
+    .heading {
+        font-size: 4.5rem;
+        color: white;
+
+        text-wrap: nowrap;
+
+        .withAiText {
+            text-wrap: nowrap;
+            color: v.$appRed;
+        }
+    }
+
+    .secondaryParagraph {
+        font-size: 1.25rem;
+        color: v.$secondaryWhite;
+        font-weight: bold;
+        text-align: center;
+        max-width: 831px;
+    }
+}
+
+@keyframes appearAnimation {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
