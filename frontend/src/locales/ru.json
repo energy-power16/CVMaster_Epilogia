@@ -2,14 +2,14 @@
     "translation": {
         "savedResumes": "Сохранённые резюме",
         "startNewChat": "Новый чат",
-        "login": "Ввойти",
+        "login": "Войти",
         "language": "Язык",
 
         "ru": "Ru",
         "en": "En",
         "createWithHeader": "Создай своё резюме",
         "withAiHeader": "с помощью ИИ",
-        "textUnderCreateWithHeader": "Создай сврё резюме с помощью ИИ. Покажи свои навыки, опыт и достижения, чтобы произвести впечатление на рекрутеров",
+        "textUnderCreateWithHeader": "Создай своё резюме с помощью ИИ. Покажи свои навыки, опыт и достижения, чтобы произвести впечатление на рекрутеров",
 
         "createFromScratchHeading": "Создать с нуля",
         "createFromScratchParagraph": "Ответь на вопросы и получи своё резюме",

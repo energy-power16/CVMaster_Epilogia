@@ -1,0 +1,112 @@
+@use 'shared/styles/variables' as v;
+@use '../../styles/shared' as s;
+@use 'sass:color';
+
+$inputFieldBackgroundColor: #2e2e2e;
+
+.inputWrapper {
+    min-width: 1114px;
+
+    &.disabled {
+        opacity: 0.5;
+    }
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: $inputFieldBackgroundColor;
+    border-radius: 22px;
+    padding: 15px;
+
+    .leftPartWrapper {
+        display: flex;
+
+        width: 100%;
+
+        margin-right: 20px;
+
+        .iconWrapper {
+            background-color: black;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border: none;
+            outline: none;
+
+            @include s.transition();
+
+            &:hover {
+                cursor: pointer;
+                background-color: color.scale($color: black, $lightness: 5%);
+            }
+
+            &:active {
+                cursor: pointer;
+                background-color: black;
+            }
+
+            .pinIcon {
+                width: 29px;
+                height: 29px;
+            }
+        }
+
+        .inputField {
+            background-color: transparent;
+            outline: none;
+            border: none;
+
+            width: 100%;
+
+            margin-left: 22px;
+
+            color: v.$secondaryWhite;
+
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+    }
+
+    .sendButtonWrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        flex-shrink: 0;
+
+        background-color: v.$appRed;
+        outline: none;
+        border: none;
+        border-radius: 13px;
+        padding-left: 13px;
+
+        @include s.transition();
+
+        &:hover {
+            cursor: pointer;
+            background-color: color.scale($color: v.$appRed, $lightness: 20%);
+        }
+
+        &:active {
+            background-color: v.$appRed;
+        }
+
+        .buttonText {
+            font-size: 1.4rem;
+            line-height: 0.9rem;
+        }
+
+        .sendIcon {
+            width: 45px;
+            height: 45px;
+        }
+    }
+}

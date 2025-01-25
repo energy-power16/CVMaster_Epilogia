@@ -1,18 +1,11 @@
 @use 'shared/styles/variables' as v;
+@use '../../styles/shared' as s;
 @use 'sass:color';
 
-$inputFieldBackgroundColor: #2e2e2e;
 $spaceFromBottom: 40px;
 
-$cardBgColor: rgba(46, 46, 46, 0.4);
-$cardBorderColor: rgba(102, 102, 102, 0.17);
-
-@mixin transition() {
-    transition: all 0.1s ease-in-out;
-}
-
 .wrapper {
-    position: absolute;
+    position: fixed;
     bottom: calc(-#{$spaceFromBottom} - 100px);
     left: 50%;
     transform: translateX(-50%);
@@ -29,180 +22,9 @@ $cardBorderColor: rgba(102, 102, 102, 0.17);
             margin-left: 35px;
         }
 
-        .card {
-            background-color: $cardBgColor;
-            border-radius: 23px;
-            border: 1px solid $cardBorderColor;
-            padding: 22px;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            opacity: 0;
-
-            @include transition();
-
-            @for $i from 1 to 3 {
-                &:nth-child(#{$i}) {
-                    animation: appear
-                        0.6s
-                        ease-in-out
-                        calc(0.5s + 0.8s * #{$i})
-                        forwards;
-                }
-            }
-
-            &:hover {
-                cursor: pointer;
-                background-color: color.scale(
-                    $color: $cardBgColor,
-                    $lightness: 10%
-                );
-            }
-
-            .cardHeaderIconWrapper {
-                display: flex;
-                justify-content: space-between;
-                align-items: start;
-
-                .cardHeader {
-                    font-size: 1.25rem;
-                    font-weight: 500;
-                    color: v.$primaryWhite;
-                    max-width: 140px;
-                }
-
-                .cardIcon {
-                    width: 32px;
-                    height: 32px;
-                }
-            }
-
-            .cardParagraph {
-                font-size: 1rem;
-                color: #5c5c5c;
-                margin-top: 13px;
-                max-width: 174px;
-            }
+        &.disappear {
+            animation: disappearAnimation 0.6s ease-in-out forwards;
         }
-    }
-
-    .inputWrapper {
-        min-width: 1114px;
-
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        background-color: $inputFieldBackgroundColor;
-        border-radius: 22px;
-        padding: 15px;
-
-        .leftPartWrapper {
-            display: flex;
-
-            width: 100%;
-
-            margin-right: 20px;
-
-            .iconWrapper {
-                background-color: black;
-                border-radius: 50%;
-                width: 50px;
-                height: 50px;
-
-                flex-shrink: 0;
-
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                border: none;
-                outline: none;
-
-                @include transition();
-
-                &:hover {
-                    cursor: pointer;
-                    background-color: color.scale(
-                        $color: black,
-                        $lightness: 5%
-                    );
-                }
-
-                &:active {
-                    cursor: pointer;
-                    background-color: black;
-                }
-
-                .pinIcon {
-                    width: 29px;
-                    height: 29px;
-                }
-            }
-
-            .inputField {
-                background-color: transparent;
-                outline: none;
-                border: none;
-
-                width: 100%;
-
-                margin-left: 22px;
-
-                color: v.$secondaryWhite;
-
-                font-size: 1.4rem;
-                font-weight: bold;
-            }
-        }
-
-        .sendButtonWrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            flex-shrink: 0;
-
-            background-color: v.$appRed;
-            outline: none;
-            border: none;
-            border-radius: 13px;
-            padding-left: 13px;
-
-            @include transition();
-
-            &:hover {
-                cursor: pointer;
-                background-color: color.scale(
-                    $color: v.$appRed,
-                    $lightness: 20%
-                );
-            }
-
-            &:active {
-                background-color: v.$appRed;
-            }
-
-            .buttonText {
-                font-size: 1.4rem;
-                line-height: 0.9rem;
-            }
-
-            .sendIcon {
-                width: 45px;
-                height: 45px;
-            }
-        }
-    }
-
-    .underInputWrapper {
-        text-align: center;
-        font-size: 1.25rem;
-        color: v.$secondaryWhite;
-        font-weight: bold;
-
-        margin-top: 10px;
     }
 }
 
@@ -224,12 +46,13 @@ $cardBorderColor: rgba(102, 102, 102, 0.17);
     }
 }
 
-@keyframes appear {
+@keyframes disappearAnimation {
     from {
-        opacity: 0;
+        opacity: 1;
     }
 
     to {
-        opacity: 100;
+        opacity: 0;
+        display: none;
     }
 }

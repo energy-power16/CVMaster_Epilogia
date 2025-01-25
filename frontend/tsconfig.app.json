@@ -27,7 +27,8 @@
             "components/*": ["components/*"],
             "shared/*": ["shared/*"],
             "features/*": ["features/*"],
-            "pages/*": ["pages/*"]
+            "pages/*": ["pages/*"],
+            "@redux/*": ["redux/*"]
         }
     },
     "include": ["src"]

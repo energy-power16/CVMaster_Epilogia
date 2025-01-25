@@ -7,7 +7,7 @@
     flex-direction: column;
     min-height: 100vh;
 
-    overflow: hidden;
+    z-index: 20;
 
     .container {
         position: fixed;
@@ -25,9 +25,15 @@
         justify-content: space-between;
         align-items: center;
 
+        background-color: v.$appBlack;
+
         .logo {
             color: v.$primaryWhite;
             font-size: 2.25rem;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
 
         .buttonGroup {
