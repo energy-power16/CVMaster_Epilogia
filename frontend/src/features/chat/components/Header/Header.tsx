@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
-
-import styles from './Header.module.scss';
 import { useAppSelector } from 'shared/hooks';
 import { selectCurrentAppState } from '@redux/appState/selectors';
 import classNames from 'classnames';
+
+import styles from './Header.module.scss';
 
 export const Header = () => {
     const { t } = useTranslation();

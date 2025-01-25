@@ -19,6 +19,9 @@
         "enterYouAnswer": "Enter your answer...",
         "send": "Send",
         "answerToMakeResume": "Answer chat's questions to make your resume",
-        "questionsLeftToAnswer": "Questions left to answer"
+        "questionsLeftToAnswer": "Questions left to answer",
+
+        "hereIsYourResume": "Here is your resume!",
+        "comingSoon": "Coming soon..."
     }
 }

@@ -1,10 +1,12 @@
+@use 'shared/styles/variables' as v;
+@use 'sass:color';
+
 .messageAreaWrapper {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
 
     width: 1114px;
-    min-height: 80vh;
 
     margin-top: 200px;
     margin-bottom: 200px;

@@ -36,6 +36,7 @@ export const ChatInputField = () => {
             heading: t('makeFromExistingHeader'),
             icon: <FeatherPenIcon />,
             secondaryParagraph: t('makeFromExistingParagraph'),
+            disabled: true,
             handleClick: () => {
                 dispatch(changeAppState('createFromExisting'));
             },

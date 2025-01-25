@@ -8,3 +8,4 @@ export { PinIcon } from './PinIcon';
 export { RussianFlagIcon } from './RussianFlagIcon';
 export { SaveIcon } from './SaveIcon';
 export { SearchArrowIcon } from './SearchArrowIcon';
+export { FileIcon } from './FileIcon';

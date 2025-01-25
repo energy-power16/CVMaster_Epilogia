@@ -1,8 +1,10 @@
+import { ReactNode } from 'react';
+
 export type MsgSender = 'user' | 'cvmaster';
 
 export type Msg = {
-    messageEn: string | null;
-    messageRu: string | null;
+    messageEn: ReactNode;
+    messageRu: ReactNode;
     from: MsgSender;
 };
 

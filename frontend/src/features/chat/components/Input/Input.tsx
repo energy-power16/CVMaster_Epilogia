@@ -16,13 +16,15 @@ export const Input = () => {
         setIsIdle(state === 'idle');
     }, [state]);
 
-    const { currentChatId, isThinking } = useAppSelector(
+    const { currentChatId, isThinking, progress } = useAppSelector(
         (state) => state.message,
     );
     const { sendMessage } = useSendUserMessage();
 
     const handleSubmit = (event: FormEvent) => {
         event.preventDefault();
+
+        if (progress == 100 || isIdle) return;
 
         if (currentInputText !== '' && currentChatId && !isThinking) {
             sendMessage(currentInputText, currentChatId);
@@ -31,12 +33,14 @@ export const Input = () => {
     };
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setCurrentInputText(event.target.value);
+        if (progress !== 100 && !isIdle) {
+            setCurrentInputText(event.target.value);
+        }
     };
     return (
         <form
             className={classNames(styles.inputWrapper, {
-                [styles.disabled]: isIdle,
+                [styles.disabled]: isIdle || progress === 100,
             })}
             onSubmit={handleSubmit}
         >
@@ -48,7 +52,7 @@ export const Input = () => {
                     className={styles.inputField}
                     type="text"
                     placeholder={t('enterYouAnswer')}
-                    disabled={isIdle}
+                    disabled={isIdle || progress === 100}
                     value={currentInputText}
                     onChange={handleChange}
                 />

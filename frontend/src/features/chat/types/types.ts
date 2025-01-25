@@ -5,4 +5,5 @@ export type Card = {
     icon: ReactNode;
     secondaryParagraph: string;
     handleClick: (e: MouseEvent<HTMLDivElement>) => void;
+    disabled?: boolean;
 };

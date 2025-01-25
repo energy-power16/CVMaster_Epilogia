@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useSendUserMessage } from 'features/chat/hooks/useSendUserMessage';
 import { useEffect, useRef } from 'react';
 import { LoadingAnimation } from 'components/LoadingAnimation/LoadingAnimation';
+import { MessagesIfProgressFull } from '../MessagesIfProgressFull/MessagesIfProgressFull';
 
 import styles from './MessageArea.module.scss';
 
@@ -44,6 +45,7 @@ export const MessageArea = () => {
             {isThinking && (
                 <Message content={<LoadingAnimation />} sender="cvmaster" />
             )}
+            <MessagesIfProgressFull />
         </div>
     );
 };

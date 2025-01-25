@@ -19,6 +19,12 @@ const messageSlice = createSlice({
     name: 'message',
     initialState,
     reducers: {
+        resetMessages: (state) => {
+            state.currentChatId = initialState.currentChatId;
+            state.isThinking = initialState.isThinking;
+            state.messages = initialState.messages;
+            state.progress = initialState.progress;
+        },
         askCVMaster: (state, action: PayloadAction<CVMasterQuery>) => {
             const newMessage: Msg = {
                 messageEn: action.payload.message,
@@ -81,5 +87,5 @@ const messageSlice = createSlice({
     },
 });
 
-export const { askCVMaster } = messageSlice.actions;
+export const { askCVMaster, resetMessages } = messageSlice.actions;
 export default messageSlice.reducer;

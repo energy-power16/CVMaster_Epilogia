@@ -20,6 +20,9 @@
         "enterYouAnswer": "Введи свой ответ...",
         "send": "Отправить",
         "answerToMakeResume": "Ответь на вопросы чата, чтобы составить своё резюме",
-        "questionsLeftToAnswer": "Осталось вопросов"
+        "questionsLeftToAnswer": "Осталось вопросов",
+
+        "hereIsYourResume": "Твоё резюме готово!",
+        "comingSoon": "Совсем скоро..."
     }
 }
