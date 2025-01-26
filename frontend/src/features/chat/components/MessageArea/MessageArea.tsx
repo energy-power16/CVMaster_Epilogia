@@ -7,6 +7,7 @@ import { LoadingAnimation } from 'components/LoadingAnimation/LoadingAnimation';
 import { MessagesIfProgressFull } from '../MessagesIfProgressFull/MessagesIfProgressFull';
 
 import styles from './MessageArea.module.scss';
+import { prepareAutoBatched } from '@reduxjs/toolkit';
 
 export const MessageArea = () => {
     const { isThinking, messages, currentChatId } = useAppSelector(
