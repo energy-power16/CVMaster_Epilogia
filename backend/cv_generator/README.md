@@ -37,8 +37,8 @@ docker logs cv_generator-app-1
 ## Data for authorization in the DB
 
 - ### For the CV generator database (PostgreSQL, port - 5432):
-- username: username
-- password: password
+    - username: username
+    - password: password
 
 ## Notes
 - To view the Swagger specification, follow the link ```http://localhost:8080/swagger-ui/index.html``` after making sure the app is running.
