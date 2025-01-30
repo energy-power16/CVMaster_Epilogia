@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { t } from 'i18next';
-import { FormEvent, ChangeEvent, useState, useEffect } from 'react';
+import { FormEvent, ChangeEvent, useState, useEffect, useRef } from 'react';
 import { PinIcon, SearchArrowIcon } from 'shared/icons';
 import { useSendUserMessage } from 'features/chat/hooks/useSendUserMessage';
 import { useAppSelector } from 'shared/hooks';
@@ -15,6 +15,7 @@ export const Input = () => {
     useEffect(() => {
         setIsIdle(state === 'idle');
     }, [state]);
+    const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
     const { currentChatId, isThinking, progress } = useAppSelector(
         (state) => state.message,
@@ -29,14 +30,24 @@ export const Input = () => {
         if (currentInputText !== '' && currentChatId && !isThinking) {
             sendMessage(currentInputText, currentChatId);
             setCurrentInputText('');
+
+            if (textAreaRef.current) {
+                textAreaRef.current.style.height = 'auto';
+            }
         }
     };
 
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
         if (progress !== 100 && !isIdle) {
             setCurrentInputText(event.target.value);
         }
+
+        if (textAreaRef.current) {
+            textAreaRef.current.style.height = 'auto';
+            textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
+        }
     };
+
     return (
         <form
             className={classNames(styles.inputWrapper, {
@@ -48,13 +59,14 @@ export const Input = () => {
                 <button className={styles.iconWrapper} type="button">
                     <PinIcon className={styles.pinIcon} />
                 </button>
-                <input
+                <textarea
                     className={styles.inputField}
-                    type="text"
                     placeholder={t('enterYouAnswer')}
                     disabled={isIdle || progress === 100}
                     value={currentInputText}
                     onChange={handleChange}
+                    rows={1}
+                    ref={textAreaRef}
                 />
             </div>
             <button className={styles.sendButtonWrapper} type="submit">

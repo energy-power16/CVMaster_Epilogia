@@ -45,7 +45,7 @@ export const Message: FC<MessageProps> = ({ content, sender }) => {
                     [styles.cvMaster]: sender === 'cvmaster',
                 })}
             >
-                {content}
+                <pre>{content}</pre>
             </div>
         </div>
     );

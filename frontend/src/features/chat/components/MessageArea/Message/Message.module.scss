@@ -35,6 +35,13 @@ $messageStrokeColor: rgba(102, 102, 102, 0.17);
         max-width: 70%;
         overflow-wrap: break-word;
 
+        pre {
+            font-family: inherit;
+            font-size: inherit;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
         &.user {
             background-color: $messageUserBgColor;
         }
