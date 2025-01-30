@@ -1,0 +1,40 @@
+package com.cv_generator.services.implementations;
+
+import com.cv_generator.commands.BaseCommand;
+import com.cv_generator.commands.implementations.GetResumePdfCommandImpl;
+import com.cv_generator.commands.implementations.InitiateChatFromScratchCommandImpl;
+import com.cv_generator.commands.implementations.ProcessMessageCommandImpl;
+import com.cv_generator.repositories.ResumeRepository;
+import com.cv_generator.requests.MessageRequest;
+import com.cv_generator.responses.InitializationResponse;
+import com.cv_generator.responses.GenerationResponse;
+import com.cv_generator.services.ApiClientService;
+import com.cv_generator.services.ResumeService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@AllArgsConstructor
+public class ResumeServiceImpl implements ResumeService {
+    private final ResumeRepository resumeRepository;
+
+    private final ApiClientService apiClientService;
+
+    public InitializationResponse initiateChatFromScratch(String lang) {
+        BaseCommand<InitializationResponse> initializationCommand = new InitiateChatFromScratchCommandImpl(resumeRepository, lang);
+
+        return initializationCommand.execute();
+    }
+
+    public GenerationResponse processMessage(String chatId, MessageRequest request) {
+        BaseCommand<GenerationResponse> processMessageCommand = new ProcessMessageCommandImpl(resumeRepository, apiClientService, chatId, request);
+
+        return processMessageCommand.execute();
+    }
+
+    public String getResumePdf(String chatId, String lang) {
+        BaseCommand<String> getResumePdfCommand = new GetResumePdfCommandImpl(resumeRepository, chatId, lang);
+
+        return getResumePdfCommand.execute();
+    }
+}
