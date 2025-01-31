@@ -1,6 +1,7 @@
 package com.cv_generator.commands.implementations;
 
 import com.cv_generator.commands.BaseCommand;
+import com.cv_generator.entities.ResumeMessage;
 import com.cv_generator.entities.ResumeSession;
 import com.cv_generator.enums.Language;
 import com.cv_generator.exceptions.ResourceNotFoundException;
@@ -45,7 +46,10 @@ public class ProcessMessageCommandImpl implements BaseCommand<GenerationResponse
 
         if (isEnd) {
             Resume resume = new Resume();
-            resume.setContent(String.join("\n", session.getMessages()));
+            String content = session.getMessages().stream()
+                    .map(ResumeMessage::getContent)
+                    .collect(Collectors.joining("\n"));
+            resume.setContent(content);
 
             responsesEn = List.of(new Message("Your resume is complete. Here is your file."));
             responsesRu = List.of(new Message("Ваше резюме готово. Вот ваш файл."));

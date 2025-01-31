@@ -1,6 +1,7 @@
 package com.cv_generator.commands.implementations;
 
 import com.cv_generator.commands.BaseCommand;
+import com.cv_generator.entities.ResumeMessage;
 import com.cv_generator.entities.ResumeSession;
 import com.cv_generator.enums.Language;
 import com.cv_generator.exceptions.NotCompleteResumeException;
@@ -10,6 +11,7 @@ import com.cv_generator.repositories.ResumeRepository;
 import lombok.AllArgsConstructor;
 
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import static com.cv_generator.utils.PdfGenerator.generateBase64Pdf;
 import static com.cv_generator.utils.ProgressManager.calculateProgress;
@@ -34,7 +36,11 @@ public class GetResumePdfCommandImpl implements BaseCommand<String> {
         }
 
         Resume resume = new Resume();
-        resume.setContent(String.join("\n", session.getMessages()));
+        String content = session.getMessages().stream()
+                .map(ResumeMessage::getContent)
+                .collect(Collectors.joining("\n"));
+
+        resume.setContent(content);
 
         return generateBase64Pdf(resume.getContent());
     }

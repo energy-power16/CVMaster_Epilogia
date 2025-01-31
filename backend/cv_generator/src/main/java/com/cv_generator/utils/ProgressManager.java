@@ -1,5 +1,6 @@
 package com.cv_generator.utils;
 
+import com.cv_generator.entities.ResumeMessage;
 import com.cv_generator.entities.ResumeSession;
 import com.cv_generator.enums.Language;
 
@@ -51,7 +52,9 @@ public class ProgressManager {
         Map<String, Pattern> fieldValidation = Language.ru.toString().equalsIgnoreCase(lang) ? FIELD_VALIDATION_RU : FIELD_VALIDATION_EN;
 
         long completedSections = fieldValidation.entrySet().stream()
-                .filter(entry -> session.getMessages().stream().anyMatch(msg -> entry.getValue().matcher(msg).find()))
+                .filter(entry -> session.getMessages().stream()
+                        .map(ResumeMessage::getContent)
+                        .anyMatch(msg -> entry.getValue().matcher(msg).find()))
                 .count();
 
         return (int) ((completedSections * PERCENTAGE_VALUE) / fieldValidation.size());
