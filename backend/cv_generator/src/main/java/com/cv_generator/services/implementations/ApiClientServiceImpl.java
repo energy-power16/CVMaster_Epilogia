@@ -70,7 +70,7 @@ public class ApiClientServiceImpl implements ApiClientService {
         if (response.getBody() != null && response.getBody().getChoices() != null) {
             return response.getBody().getChoices()
                     .stream()
-                    .map(choice -> choice.getMessage().getContent())
+                    .map(choice -> choice.message().getContent())
                     .toList();
         }
 
