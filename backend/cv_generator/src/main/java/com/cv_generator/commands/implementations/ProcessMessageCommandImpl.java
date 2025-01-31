@@ -4,6 +4,7 @@ import com.cv_generator.commands.BaseCommand;
 import com.cv_generator.entities.ResumeSession;
 import com.cv_generator.enums.Language;
 import com.cv_generator.exceptions.ResourceNotFoundException;
+import com.cv_generator.models.Message;
 import com.cv_generator.models.Resume;
 import com.cv_generator.repositories.ResumeRepository;
 import com.cv_generator.requests.MessageRequest;
@@ -13,6 +14,7 @@ import lombok.AllArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import static com.cv_generator.utils.PdfGenerator.generateBase64Pdf;
 import static com.cv_generator.utils.ProgressManager.calculateProgress;
@@ -30,22 +32,23 @@ public class ProcessMessageCommandImpl implements BaseCommand<GenerationResponse
     public GenerationResponse execute() {
         ResumeSession session = resumeRepository.findByChatId(chatId)
                 .orElseThrow(() -> new ResourceNotFoundException("Chat not found"));
-        session.addMessage(request.getMessage());
+
+        session.addMessage(request.getMessage().getContent());
 
         resumeRepository.save(session);
 
         int progress = calculateProgress(session, request.getLang());
         boolean isEnd = progress == 100;
 
-        List<String> responsesEn;
-        List<String> responsesRu;
+        List<Message> responsesEn;
+        List<Message> responsesRu;
 
         if (isEnd) {
             Resume resume = new Resume();
             resume.setContent(String.join("\n", session.getMessages()));
 
-            responsesEn = List.of("Your resume is complete. Here is your file.");
-            responsesRu = List.of("Ваше резюме готово. Вот ваш файл.");
+            responsesEn = List.of(new Message("Your resume is complete. Here is your file."));
+            responsesRu = List.of(new Message("Ваше резюме готово. Вот ваш файл."));
 
             String pdfBase64 = generateBase64Pdf(resume.getContent());
 
@@ -53,8 +56,11 @@ public class ProcessMessageCommandImpl implements BaseCommand<GenerationResponse
                     ? new GenerationResponse(null, responsesRu, progress, true, pdfBase64)
                     : new GenerationResponse(responsesEn, null, progress, true, pdfBase64);
         } else {
-            responsesEn = apiClientService.getChatResponse(request.getMessage(), Language.en.toString());
-            responsesRu = apiClientService.getChatResponse(request.getMessage(), Language.ru.toString());
+            responsesEn = apiClientService.getChatResponse(request.getMessage().getContent(), Language.en.toString())
+                    .stream().map(Message::new).collect(Collectors.toList());
+
+            responsesRu = apiClientService.getChatResponse(request.getMessage().getContent(), Language.ru.toString())
+                    .stream().map(Message::new).collect(Collectors.toList());
 
             return request.getLang().equalsIgnoreCase(Language.ru.toString())
                     ? new GenerationResponse(null, responsesRu, progress, false, null)

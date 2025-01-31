@@ -1,5 +1,6 @@
 package com.cv_generator.responses;
 
+import com.cv_generator.models.Message;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,8 +12,8 @@ import java.util.UUID;
 public class InitializationResponse extends ChatResponse {
     private UUID chatId;
 
-    public InitializationResponse(List<String> messagesEn,
-                                  List<String> messagesRu,
+    public InitializationResponse(List<Message> messagesEn,
+                                  List<Message> messagesRu,
                                   UUID chatId) {
         super(messagesEn, messagesRu);
         this.chatId = chatId;
