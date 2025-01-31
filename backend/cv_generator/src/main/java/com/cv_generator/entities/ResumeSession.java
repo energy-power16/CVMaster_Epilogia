@@ -1,5 +1,6 @@
 package com.cv_generator.entities;
 
+import com.cv_generator.enums.Language;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,8 +20,9 @@ public class ResumeSession {
     @Column(name = "chat_id", nullable = false)
     private UUID chatId;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "lang", length = 2, nullable = false)
-    private String lang = "en";
+    private Language lang = Language.en;
 
     @ElementCollection
     @CollectionTable(name = "resume_messages", joinColumns = @JoinColumn(name = "chat_id"))
