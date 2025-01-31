@@ -43,11 +43,14 @@ public class ProcessMessageCommandImpl implements BaseCommand<GenerationResponse
             Resume resume = new Resume();
             resume.setContent(String.join("\n", session.getMessages()));
 
+            responsesEn = List.of("Your resume is complete. Here is your file.");
+            responsesRu = List.of("Ваше резюме готово. Вот ваш файл.");
+
             String pdfBase64 = generateBase64Pdf(resume.getContent());
 
             return request.getLang().equalsIgnoreCase(Language.ru.toString())
-                    ? new GenerationResponse(null, List.of("Ваше резюме готово. Вот ваш файл."), progress, true, pdfBase64)
-                    : new GenerationResponse(List.of("Your resume is complete. Here is your file."), null, progress, true, pdfBase64);
+                    ? new GenerationResponse(null, responsesRu, progress, true, pdfBase64)
+                    : new GenerationResponse(responsesEn, null, progress, true, pdfBase64);
         } else {
             responsesEn = apiClientService.getChatResponse(request.getMessage(), Language.en.toString());
             responsesRu = apiClientService.getChatResponse(request.getMessage(), Language.ru.toString());
