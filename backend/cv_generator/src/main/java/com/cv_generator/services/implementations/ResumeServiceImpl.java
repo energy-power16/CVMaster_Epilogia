@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+import static com.cv_generator.utils.Validator.validateLanguage;
+
 @Service
 @AllArgsConstructor
 public class ResumeServiceImpl implements ResumeService {
@@ -23,6 +25,8 @@ public class ResumeServiceImpl implements ResumeService {
     private final ApiClientService apiClientService;
 
     public InitializationResponse initiateChatFromScratch(String lang) {
+        validateLanguage(lang);
+
         BaseCommand<InitializationResponse> initializationCommand = new InitiateChatFromScratchCommandImpl(resumeRepository, lang);
 
         return initializationCommand.execute();
@@ -35,6 +39,8 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     public String getResumePdf(UUID chatId, String lang) {
+        validateLanguage(lang);
+
         BaseCommand<String> getResumePdfCommand = new GetResumePdfCommandImpl(resumeRepository, chatId, lang);
 
         return getResumePdfCommand.execute();
