@@ -24,16 +24,16 @@ public class ResumeSession {
     @Column(name = "lang", length = 2, nullable = false)
     private Language lang = Language.en;
 
-    @ElementCollection
-    @CollectionTable(name = "resume_messages", joinColumns = @JoinColumn(name = "chat_id"))
-    @Column(name = "message", length = 1000)
-    private List<String> messages = new ArrayList<>();
+    @OneToMany(mappedBy = "resumeSession", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ResumeMessage> messages = new ArrayList<>();
 
     public ResumeSession(UUID chatId) {
         this.chatId = chatId;
     }
 
-    public void addMessage(String message) {
+    public void addMessage(String content) {
+        ResumeMessage message = new ResumeMessage(content, this);
+
         messages.add(message);
     }
 }
