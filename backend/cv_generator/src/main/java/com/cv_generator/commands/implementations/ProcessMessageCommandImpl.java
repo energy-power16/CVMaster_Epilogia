@@ -51,8 +51,8 @@ public class ProcessMessageCommandImpl implements BaseCommand<GenerationResponse
                     .collect(Collectors.joining("\n"));
             resume.setContent(content);
 
-            responsesEn = List.of(new Message("Your resume is complete. Here is your file."));
-            responsesRu = List.of(new Message("Ваше резюме готово. Вот ваш файл."));
+            responsesEn = List.of(new Message("Your resume is complete."));
+            responsesRu = List.of(new Message("Ваше резюме готово."));
 
             String pdfBase64 = generateBase64Pdf(resume.getContent());
 
