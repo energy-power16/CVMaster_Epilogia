@@ -12,6 +12,7 @@ import com.cv_generator.services.ApiClientService;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
+import java.util.UUID;
 
 import static com.cv_generator.utils.PdfGenerator.generateBase64Pdf;
 import static com.cv_generator.utils.ProgressManager.calculateProgress;
@@ -22,7 +23,7 @@ public class ProcessMessageCommandImpl implements BaseCommand<GenerationResponse
 
     private final ApiClientService apiClientService;
 
-    private final String chatId;
+    private final UUID chatId;
 
     private final MessageRequest request;
 

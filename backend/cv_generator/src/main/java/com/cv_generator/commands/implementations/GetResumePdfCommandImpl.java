@@ -9,6 +9,8 @@ import com.cv_generator.models.Resume;
 import com.cv_generator.repositories.ResumeRepository;
 import lombok.AllArgsConstructor;
 
+import java.util.UUID;
+
 import static com.cv_generator.utils.PdfGenerator.generateBase64Pdf;
 import static com.cv_generator.utils.ProgressManager.calculateProgress;
 
@@ -16,7 +18,7 @@ import static com.cv_generator.utils.ProgressManager.calculateProgress;
 public class GetResumePdfCommandImpl implements BaseCommand<String> {
     private final ResumeRepository resumeRepository;
 
-    private final String chatId;
+    private final UUID chatId;
 
     private final String lang;
 
@@ -30,6 +32,7 @@ public class GetResumePdfCommandImpl implements BaseCommand<String> {
                             : "Resume is not complete yet"
             );
         }
+
         Resume resume = new Resume();
         resume.setContent(String.join("\n", session.getMessages()));
 

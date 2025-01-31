@@ -13,6 +13,8 @@ import com.cv_generator.services.ResumeService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @AllArgsConstructor
 public class ResumeServiceImpl implements ResumeService {
@@ -26,13 +28,13 @@ public class ResumeServiceImpl implements ResumeService {
         return initializationCommand.execute();
     }
 
-    public GenerationResponse processMessage(String chatId, MessageRequest request) {
+    public GenerationResponse processMessage(UUID chatId, MessageRequest request) {
         BaseCommand<GenerationResponse> processMessageCommand = new ProcessMessageCommandImpl(resumeRepository, apiClientService, chatId, request);
 
         return processMessageCommand.execute();
     }
 
-    public String getResumePdf(String chatId, String lang) {
+    public String getResumePdf(UUID chatId, String lang) {
         BaseCommand<String> getResumePdfCommand = new GetResumePdfCommandImpl(resumeRepository, chatId, lang);
 
         return getResumePdfCommand.execute();

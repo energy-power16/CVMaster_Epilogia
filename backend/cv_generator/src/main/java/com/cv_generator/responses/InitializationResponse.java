@@ -4,15 +4,16 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
 public class InitializationResponse extends ChatResponse {
-    private String chatId;
+    private UUID chatId;
 
     public InitializationResponse(List<String> messagesEn,
                                   List<String> messagesRu,
-                                  String chatId) {
+                                  UUID chatId) {
         super(messagesEn, messagesRu);
         this.chatId = chatId;
     }

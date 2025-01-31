@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Base64;
+import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
@@ -40,7 +41,7 @@ public class ResumeController {
             content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = GenerationResponse.class)))
     public ResponseEntity<GenerationResponse> sendMessage(@PathVariable String chatId, @RequestBody MessageRequest request) {
-        return ResponseEntity.ok(resumeService.processMessage(chatId, request));
+        return ResponseEntity.ok(resumeService.processMessage(UUID.fromString(chatId), request));
     }
 
 
@@ -49,7 +50,7 @@ public class ResumeController {
             responses = {@ApiResponse(responseCode = "200", description = "PDF downloaded",
                     content = @Content(mediaType = "application/pdf"))})
     public ResponseEntity<byte[]> downloadResume(@PathVariable String chatId, @RequestParam String lang) {
-        String pdfBase64 = resumeService.getResumePdf(chatId, lang);
+        String pdfBase64 = resumeService.getResumePdf(UUID.fromString(chatId), lang);
 
         byte[] pdfBytes = Base64.getDecoder().decode(pdfBase64);
 

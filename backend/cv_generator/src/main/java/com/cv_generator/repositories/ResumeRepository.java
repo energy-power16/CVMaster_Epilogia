@@ -5,8 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
-public interface ResumeRepository extends JpaRepository<ResumeSession, String> {
-    Optional<ResumeSession> findByChatId(String chatId);
+public interface ResumeRepository extends JpaRepository<ResumeSession, UUID> {
+    Optional<ResumeSession> findByChatId(UUID chatId);
 }

@@ -35,7 +35,7 @@ public class InitiateChatFromScratchCommandImpl implements BaseCommand<Initializ
     );
 
     public InitializationResponse execute() {
-        String chatId = UUID.randomUUID().toString();
+        UUID chatId = UUID.randomUUID();
 
         resumeRepository.save(new ResumeSession(chatId));
 

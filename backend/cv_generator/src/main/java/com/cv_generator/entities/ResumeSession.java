@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -16,7 +17,7 @@ import java.util.List;
 public class ResumeSession {
     @Id
     @Column(name = "chat_id", nullable = false)
-    private String chatId;
+    private UUID chatId;
 
     @Column(name = "lang", length = 2, nullable = false)
     private String lang = "en";
@@ -26,7 +27,7 @@ public class ResumeSession {
     @Column(name = "message", length = 1000)
     private List<String> messages = new ArrayList<>();
 
-    public ResumeSession(String chatId) {
+    public ResumeSession(UUID chatId) {
         this.chatId = chatId;
     }
 
