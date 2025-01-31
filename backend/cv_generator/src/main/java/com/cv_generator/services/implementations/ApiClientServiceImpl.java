@@ -46,7 +46,8 @@ public class ApiClientServiceImpl implements ApiClientService {
                     "3. Профессиональный опыт — История работы, должности, основные обязанности " +
                     "4. Навыки — Технические навыки " +
                     "Если каких-то данных не хватает, предложите варианты улучшения резюме. " +
-                    "Дайте конструктивную обратную связь и помогите пользователю улучшить содержание резюме.";
+                    "Дайте конструктивную обратную связь и помогите пользователю улучшить содержание резюме." +
+                    "Если резюме готово на 100%, то просто кратко уведомите об этом пользователя и более ничего лишнего не сообщая";
         } else {
             systemFrames = "You are a resume generation assistant. " +
                     "Your goal is to help users create a good resume. " +
@@ -57,7 +58,8 @@ public class ApiClientServiceImpl implements ApiClientService {
                     "4. Skills - Technical skills " +
                     "If some details are missing, offer suggestions to enhance the resume. " +
                     "Provide constructive feedback and help the user improve their resume content. " +
-                    "Be helpful and guide the user towards creating a strong, professional resume.";
+                    "Be helpful and guide the user towards creating a strong, professional resume." +
+                    "If the resume is 100% ready, then simply notify the user briefly about this and without telling anything else extra.";
         }
 
         String requestBody = String.format(
