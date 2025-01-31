@@ -14,6 +14,13 @@ import java.util.List;
 
 @Service
 public class ApiClientServiceImpl implements ApiClientService {
+    private static final String REQUEST_BODY_TEMPLATE_VALUE =
+            "{ \"model\": \"gpt-4o-mini\", " +
+                    "\"messages\": [" +
+                    "{\"role\": \"system\", \"content\": \"%s\"}," +
+                    "{\"role\": \"user\", \"content\": \"%s\"}], " +
+                    "\"temperature\": 0.7, \"max_tokens\": 9000 }";
+
     @Value("${api.url}")
     private String apiUrl;
 
@@ -54,11 +61,7 @@ public class ApiClientServiceImpl implements ApiClientService {
         }
 
         String requestBody = String.format(
-                "{ \"model\": \"gpt-4o-mini\", " +
-                        "\"messages\": [" +
-                        "{\"role\": \"system\", \"content\": \"%s\"}," +
-                        "{\"role\": \"user\", \"content\": \"%s\"}], " +
-                        "\"temperature\": 0.7, \"max_tokens\": 9000 }",
+                REQUEST_BODY_TEMPLATE_VALUE,
                 systemFrames.replace("\"", "\\\""),
                 userMessage.replace("\"", "\\\"")
         );
