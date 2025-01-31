@@ -10,12 +10,13 @@ import java.util.UUID;
 @Getter
 @Setter
 public class InitializationResponse extends ChatResponse {
-    private UUID chatId;
+    private static final int INITIAL_PROGRESS_VALUE = 0;
 
-    public InitializationResponse(List<Message> messagesEn,
-                                  List<Message> messagesRu,
-                                  UUID chatId) {
-        super(messagesEn, messagesRu);
-        this.chatId = chatId;
+    private static final boolean CONVERSATION_STATUS_VALUE = false;
+
+    public InitializationResponse(UUID chatId,
+                                  List<Message> messagesEn,
+                                  List<Message> messagesRu) {
+        super(chatId, messagesEn, messagesRu, INITIAL_PROGRESS_VALUE, CONVERSATION_STATUS_VALUE, null);
     }
 }

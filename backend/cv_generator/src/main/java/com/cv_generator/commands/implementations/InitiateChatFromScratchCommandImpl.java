@@ -43,6 +43,6 @@ public class InitiateChatFromScratchCommandImpl implements BaseCommand<Initializ
 
         List<Message> messages = Language.ru.toString().equalsIgnoreCase(lang) ? MESSAGES_RU : MESSAGES_EN;
 
-        return new InitializationResponse(messages, null, chatId);
+        return new InitializationResponse(chatId, messages, null);
     }
 }

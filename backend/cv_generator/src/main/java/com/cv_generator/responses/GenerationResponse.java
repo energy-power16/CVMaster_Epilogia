@@ -4,25 +4,17 @@ import com.cv_generator.models.Message;
 import lombok.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
 public class GenerationResponse extends ChatResponse {
-    private int progress;
-
-    private boolean isEndOfConversation;
-
-    private String pdfFile;
-
-    public GenerationResponse(List<Message> messagesEn,
+    public GenerationResponse(UUID chatID,
+                              List<Message> messagesEn,
                               List<Message> messagesRu,
                               int progress,
                               boolean isEndOfConversation,
                               String pdfFile) {
-        super(messagesEn, messagesRu);
-
-        this.progress = progress;
-        this.isEndOfConversation = isEndOfConversation;
-        this.pdfFile = pdfFile;
+        super(chatID, messagesEn, messagesRu, progress, isEndOfConversation, pdfFile);
     }
 }

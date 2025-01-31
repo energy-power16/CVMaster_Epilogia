@@ -5,6 +5,7 @@ import com.cv_generator.entities.ResumeMessage;
 import com.cv_generator.entities.ResumeSession;
 import com.cv_generator.enums.Language;
 import com.cv_generator.exceptions.ResourceNotFoundException;
+import com.cv_generator.models.BaseContent;
 import com.cv_generator.models.Message;
 import com.cv_generator.models.Resume;
 import com.cv_generator.repositories.ResumeRepository;
@@ -45,7 +46,7 @@ public class ProcessMessageCommandImpl implements BaseCommand<GenerationResponse
         List<Message> responsesRu;
 
         if (isEnd) {
-            Resume resume = new Resume();
+            BaseContent resume = new Resume();
             String content = session.getMessages().stream()
                     .map(ResumeMessage::getContent)
                     .collect(Collectors.joining("\n"));
@@ -57,8 +58,8 @@ public class ProcessMessageCommandImpl implements BaseCommand<GenerationResponse
             String pdfBase64 = generateBase64Pdf(resume.getContent());
 
             return request.getLang().equalsIgnoreCase(Language.ru.toString())
-                    ? new GenerationResponse(null, responsesRu, progress, true, pdfBase64)
-                    : new GenerationResponse(responsesEn, null, progress, true, pdfBase64);
+                    ? new GenerationResponse(chatId,null, responsesRu, progress, true, pdfBase64)
+                    : new GenerationResponse(chatId, responsesEn, null, progress, true, pdfBase64);
         } else {
             responsesEn = apiClientService.getChatResponse(request.getMessage().getContent(), Language.en.toString())
                     .stream().map(Message::new).collect(Collectors.toList());
@@ -67,8 +68,8 @@ public class ProcessMessageCommandImpl implements BaseCommand<GenerationResponse
                     .stream().map(Message::new).collect(Collectors.toList());
 
             return request.getLang().equalsIgnoreCase(Language.ru.toString())
-                    ? new GenerationResponse(null, responsesRu, progress, false, null)
-                    : new GenerationResponse(responsesEn, null, progress, false, null);
+                    ? new GenerationResponse(chatId, null, responsesRu, progress, false, null)
+                    : new GenerationResponse(chatId, responsesEn, null, progress, false, null);
         }
     }
 }
