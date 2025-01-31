@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 public class ProgressManager {
-    private static final int PERCENTAGE = 100;
+    private static final byte PERCENTAGE = 100;
 
     private static final Map<String, Pattern> FIELD_VALIDATION_EN = Map.of(
             "Personal Info", Pattern.compile(
