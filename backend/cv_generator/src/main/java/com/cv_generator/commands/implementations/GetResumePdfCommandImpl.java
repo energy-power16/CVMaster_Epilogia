@@ -6,6 +6,7 @@ import com.cv_generator.entities.ResumeSession;
 import com.cv_generator.enums.Language;
 import com.cv_generator.exceptions.NotCompleteResumeException;
 import com.cv_generator.exceptions.ResourceNotFoundException;
+import com.cv_generator.models.BaseContent;
 import com.cv_generator.models.Resume;
 import com.cv_generator.repositories.ResumeRepository;
 import lombok.AllArgsConstructor;
@@ -35,7 +36,7 @@ public class GetResumePdfCommandImpl implements BaseCommand<String> {
             );
         }
 
-        Resume resume = new Resume();
+        BaseContent resume = new Resume();
         String content = session.getMessages().stream()
                 .map(ResumeMessage::getContent)
                 .collect(Collectors.joining("\n"));

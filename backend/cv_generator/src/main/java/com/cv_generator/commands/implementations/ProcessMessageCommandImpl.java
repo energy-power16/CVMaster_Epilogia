@@ -5,6 +5,7 @@ import com.cv_generator.entities.ResumeMessage;
 import com.cv_generator.entities.ResumeSession;
 import com.cv_generator.enums.Language;
 import com.cv_generator.exceptions.ResourceNotFoundException;
+import com.cv_generator.models.BaseContent;
 import com.cv_generator.models.Message;
 import com.cv_generator.models.Resume;
 import com.cv_generator.repositories.ResumeRepository;
@@ -45,7 +46,7 @@ public class ProcessMessageCommandImpl implements BaseCommand<GenerationResponse
         List<Message> responsesRu;
 
         if (isEnd) {
-            Resume resume = new Resume();
+            BaseContent resume = new Resume();
             String content = session.getMessages().stream()
                     .map(ResumeMessage::getContent)
                     .collect(Collectors.joining("\n"));
