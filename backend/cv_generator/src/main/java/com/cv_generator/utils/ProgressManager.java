@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 public class ProgressManager {
-    private static final byte PERCENTAGE = 100;
+    private static final byte PERCENTAGE_VALUE = 100;
 
     private static final Map<String, Pattern> FIELD_VALIDATION_EN = Map.of(
             "Personal Info", Pattern.compile(
@@ -54,6 +54,6 @@ public class ProgressManager {
                 .filter(entry -> session.getMessages().stream().anyMatch(msg -> entry.getValue().matcher(msg).find()))
                 .count();
 
-        return (int) ((completedSections * PERCENTAGE) / fieldValidation.size());
+        return (int) ((completedSections * PERCENTAGE_VALUE) / fieldValidation.size());
     }
 }
