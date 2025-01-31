@@ -32,7 +32,13 @@ public class PdfGenerator {
     
     private static final float FONT_SCALING_FACTOR_VALUE = 1000;
 
-    public static byte[] generatePdf(String content) {
+    public static String generateBase64Pdf(String content) {
+        byte[] pdfBytes = PdfGenerator.generatePdf(content);
+
+        return Base64.encodeBase64String(pdfBytes);
+    }
+
+    private static byte[] generatePdf(String content) {
         try (PDDocument document = new PDDocument()) {
             PDPage page = new PDPage();
             document.addPage(page);
@@ -99,11 +105,5 @@ public class PdfGenerator {
         }
 
         return wrappedLines;
-    }
-
-    public static String generateBase64Pdf(String content) {
-        byte[] pdfBytes = PdfGenerator.generatePdf(content);
-
-        return Base64.encodeBase64String(pdfBytes);
     }
 }
