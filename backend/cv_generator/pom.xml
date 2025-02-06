@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>cv_generator</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <name>cv_generator</name>
     <description>CV Generator</description>
     <properties>

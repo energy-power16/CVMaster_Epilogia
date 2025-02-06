@@ -7,5 +7,5 @@ RUN mvn clean package -DskipTests
 FROM openjdk:17-jdk-slim
 EXPOSE 8080
 ARG JAR_FILE=/build/target/*.jar
-COPY --from=build /build/target/cv_generator-1.0.0.jar cv_generator.jar
+COPY --from=build /build/target/cv_generator-1.1.0.jar cv_generator.jar
 ENTRYPOINT ["java", "-jar", "cv_generator.jar"]
