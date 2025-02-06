@@ -1,8 +1,8 @@
 import { DownloadIcon, FileIcon } from 'shared/icons';
-
-import styles from './DownloadMessageContent.module.scss';
 import { useAppSelector } from 'shared/hooks';
 import { BASE_URL } from 'shared/constants/constants';
+
+import styles from './DownloadMessageContent.module.scss';
 
 export const DownloadMessageContent = () => {
     const chatId = useAppSelector((state) => state.message.currentChatId);
@@ -15,7 +15,7 @@ export const DownloadMessageContent = () => {
             </div>
             <a
                 className={styles.downloadIconWrapper}
-                href={`${BASE_URL}/api/download/${chatId}`}
+                href={`${BASE_URL}/api/download/${chatId}?lang=en`}
             >
                 <DownloadIcon className={styles.downloadIcon} />
             </a>

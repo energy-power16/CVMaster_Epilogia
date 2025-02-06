@@ -10,7 +10,7 @@ export const fetchMessage = createAsyncThunk(
     'messages/fetchMessage',
     async (query: CVMasterQuery) => {
         const response = await fetch(
-            `${BASE_URL}/api/createResume/message/${query.chatId}`,
+            `${BASE_URL}/api/message/${query.chatId}`,
             {
                 method: 'POST',
                 headers: {

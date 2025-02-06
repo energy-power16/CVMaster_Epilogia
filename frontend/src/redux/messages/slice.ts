@@ -46,8 +46,8 @@ const messageSlice = createSlice({
 
                 for (let i = 0; i < action.payload.messagesEn.length; i++) {
                     const newMessage: Msg = {
-                        messageEn: action.payload.messagesEn[i],
-                        messageRu: action.payload.messagesRu[i],
+                        messageEn: action.payload.messagesEn?.[i],
+                        messageRu: action.payload.messagesRu?.[i],
                         from: 'cvmaster',
                     };
 
@@ -70,8 +70,8 @@ const messageSlice = createSlice({
 
                 for (let i = 0; i < action.payload.messagesEn.length; i++) {
                     const newMessage: Msg = {
-                        messageEn: action.payload.messagesEn[i],
-                        messageRu: action.payload.messagesRu[i],
+                        messageEn: action.payload.messagesEn?.[i],
+                        messageRu: action.payload.messagesRu?.[i],
                         from: 'cvmaster',
                     };
 
